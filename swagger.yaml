@@ -214,13 +214,17 @@ components:
     UpdatejobRequest:
       title: UpdatejobRequest
       required:
+      - company
       - position
       type: object
       properties:
+        company:
+          type: string
         position:
           type: string
       example:
-        position: front-end
+        company: google
+        position: intern
   securitySchemes:
     bearer:
       type: http
