@@ -8,6 +8,7 @@ const connectDB = require('./db/connect');
 
 const notFound = require('./middleware/not-found');
 const errorHandler = require('./middleware/error-handler');
+const authenticateUser = require('./middleware/authentication');
 
 const authRouter = require('./routes/auth');
 const jobsRouter = require('./routes/jobs');
@@ -19,7 +20,7 @@ app.use(express.json());
 
 // routes
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/jobs', jobsRouter);
+app.use('/api/v1/jobs', authenticateUser, jobsRouter);
 
 // error handler
 app.use(notFound);
